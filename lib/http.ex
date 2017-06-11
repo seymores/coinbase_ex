@@ -61,9 +61,9 @@ defmodule Coinbase.Http do
     See https://developers.coinbase.com/docs/wallet/api-key-authentication.
   """
   defp build_request(method, url_path, body \\ "") do
-    key     = Application.get_env(:coinbase, :api_key)
-    secret  = Application.get_env(:coinbase, :api_secret)
-    version = Application.get_env(:coinbase, :version)
+    key     = Application.get_env(:coinbase_ex, :api_key)
+    secret  = Application.get_env(:coinbase_ex, :api_secret)
+    version = Application.get_env(:coinbase_ex, :version)
     ts      = inspect(:os.system_time(:seconds))
     msg     = "#{ts}#{method}#{url_path}#{body}"
     sign = :crypto.hmac(:sha256, secret, msg) |> Base.encode16(case: :lower)
@@ -71,7 +71,7 @@ defmodule Coinbase.Http do
                {"CB-ACCESS-KEY", key}, {"CB-ACCESS-SIGN", sign},
                {"CB-ACCESS-TIMESTAMP", ts}, {"CB-VERSION", version}]
     options = [ssl: [{:versions, [:'tlsv1.2']}], recv_timeout: 5000]
-    url     = Application.get_env(:coinbase, :api_url) <> url_path
+    url     = Application.get_env(:coinbase_ex, :api_url) <> url_path
     {url, headers, options}
   end
 

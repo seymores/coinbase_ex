@@ -2,7 +2,7 @@ defmodule Coinbase.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :coinbase,
+    [app: :coinbase_ex,
      version: "0.1.0",
      build_path: "build",
      config_path: "config/config.exs",
