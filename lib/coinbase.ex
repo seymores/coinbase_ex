@@ -10,7 +10,7 @@ defmodule Coinbase do
   end
 
   def get_buy_price(curr_pair) do
-    get!("/v2/prices/#{curr_pair}/buy") 
+    get!("/v2/prices/#{curr_pair}/buy")
   end
 
   @doc """
@@ -31,8 +31,8 @@ defmodule Coinbase do
   def delete_account(id) do
     case delete("/v2/accounts/#{id}") do
       {:error, err} -> err.reason
-      {:ok, %{status_code: 204} = response} -> true
-      {_, response} -> false
+      {:ok, %{status_code: 204}} -> true
+      {_, _} -> false
     end
   end
 

@@ -3,7 +3,7 @@ defmodule Coinbase.Mixfile do
 
   def project do
     [app: :coinbase_ex,
-     version: "0.1.0",
+     version: "0.2.0",
      build_path: "build",
      config_path: "config/config.exs",
      deps_path: "deps",
@@ -18,11 +18,11 @@ defmodule Coinbase.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger, :httpoison]]
   end
 
   defp deps do
-    [{:poison, "~> 3.1.0", override: true}, {:httpoison, "~> 0.11.2"}]
+    [{:poison, "~> 3.1.0", override: true},
+     {:httpoison, "~> 0.11.2"}]
   end
 end

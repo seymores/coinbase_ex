@@ -60,7 +60,7 @@ defmodule Coinbase.Http do
     CB-VERSION value set in configuration.
     See https://developers.coinbase.com/docs/wallet/api-key-authentication.
   """
-  defp build_request(method, url_path, body \\ "") do
+  def build_request(method, url_path, body \\ "") do
     key     = Application.get_env(:coinbase_ex, :api_key)
     secret  = Application.get_env(:coinbase_ex, :api_secret)
     version = Application.get_env(:coinbase_ex, :version)
