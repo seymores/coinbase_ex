@@ -34,6 +34,21 @@ Coinbase.get_buy_price("BTC-MYR")
 %{"data" => %{"amount" => "12500.29", "currency" => "MYR"}}
 ```
 
+### Account
+
+Create new account
+
+```elixir
+Coinbase.create_account("Temp Wallet Account")
+%{"data" => %{"balance" => %{"amount" => "0.00000000", "currency" => "BTC"},
+    "created_at" => "2017-06-11T23:32:13Z", "currency" => "BTC",
+    "id" => "xxx__xxx",
+    "name" => "Temp Wallet Account",
+    "native_balance" => %{"amount" => "0.00", "currency" => "USD"},
+    "primary" => false, "resource" => "account",
+    "resource_path" => "/v2/accounts/xxx__xxx",
+    "type" => "wallet", "updated_at" => "2017-06-11T23:32:13Z"}}
+```
 
 ## Configuration
 Please configure your API key and secret in your config file, see dev.secret.exs_sample.

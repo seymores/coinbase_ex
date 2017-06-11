@@ -14,13 +14,13 @@ defmodule Coinbase do
   end
 
   def current_time do
-    get!("/v2/time") 
+    get!("/v2/time")
   end
 
   @doc """
     Create new Bitcoin account with specified name.
   """
-  def create_account(name, currency) do
+  def create_account(name, currency \\ "BTC") do
     data = %{name: name, currency: currency}
     post!("/v2/accounts", data)
   end
