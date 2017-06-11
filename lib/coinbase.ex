@@ -13,6 +13,10 @@ defmodule Coinbase do
     get!("/v2/prices/#{curr_pair}/buy")
   end
 
+  def current_time do
+    get!("/v2/time") 
+  end
+
   @doc """
     Create new Bitcoin account with specified name.
   """

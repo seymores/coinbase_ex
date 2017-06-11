@@ -5,18 +5,33 @@ This library supports both the [API key authentication](https://developers.coinb
 
 ## Usage
 
+#### Time
+Get Coinbase current time.
+
+```elixir
+Coinbase.current_time()
+{"data" => %{"epoch" => 1497185372, "iso" => "2017-06-11T12:49:32Z"}}
+```
+
 ### Market Data
 
 Get supported native currencies
 
 ```elixir
 Coinbase.get_currencies()
+%{"data" => [%{"id" => "AED", "min_size" => "0.01000000",
+     "name" => "United Arab Emirates Dirham"},
+   %{"id" => "AFN", "min_size" => "0.01000000", "name" => "Afghan Afghani"},
+   %{"id" => "ALL", "min_size" => "0.01000000", "name" => "Albanian Lek"},
+    %{"id" => "FJD", "min_size" => "0.01000000", ...}, %{"id" => "FKP", ...},
+   %{...}, ...]}
 ```
 
 Get buy price
 
 ```elixir
 Coinbase.get_buy_price("BTC-MYR")
+%{"data" => %{"amount" => "12500.29", "currency" => "MYR"}}
 ```
 
 
