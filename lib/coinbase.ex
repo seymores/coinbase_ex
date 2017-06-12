@@ -17,6 +17,14 @@ defmodule Coinbase do
     get!("/v2/time")
   end
 
+  def current_user do
+    get!("/v2/user")
+  end
+
+  def accounts do
+    get!("/v2/accounts")
+  end
+
   @doc """
     Create new Bitcoin account with specified name.
   """
