@@ -9,8 +9,20 @@ defmodule Coinbase do
     get!("/v2/currencies")
   end
 
+  def get_exchange_rates(currency \\ "BTC") do
+    get!("/v2/exchange-rates?currency=#{currency}")
+  end
+
   def get_buy_price(curr_pair) do
     get!("/v2/prices/#{curr_pair}/buy")
+  end
+
+  def get_sell_price(curr_pair) do
+    get!("/v2/prices/#{curr_pair}/sell")
+  end
+
+  def get_spot_price(curr_pair) do
+    get!("/v2/prices/#{curr_pair}/spot")
   end
 
   def current_time do
