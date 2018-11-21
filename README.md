@@ -1,6 +1,6 @@
 # coinbase_ex
 
-An easy way to buy, send, and accept bitcoin through the [Coinbase API](https://developers.coinbase.com).  
+An easy way to buy, send, and accept bitcoin through the [Coinbase API](https://developers.coinbase.com).
 This library supports both the [API key authentication](https://developers.coinbase.com/docs/wallet/api-key-authentication) method only for now.
 
 ## Usage
@@ -42,11 +42,47 @@ Coinbase.get_currencies()
    %{...}, ...]}
 ```
 
-Get buy price
+Get exchange rates(default "BTC")
+
+```elixir
+Coinbase.get_exchange_rates
+%{
+  "data" => %{
+    "currency" => "BTC",
+    "rates" => %{
+      "AUD" => "6233.31",
+      "CZK" => "103339.36",
+      "IDR" => "66121345.71",
+      ...
+    }
+  }
+}
+
+Coinbase.get_exchange_rates("ETH")
+%{
+  "data" => %{
+    "currency" => "ETH",
+    "rates" => %{
+      "AUD" => "185.58",
+      "CZK" => "3076.72",
+      "IDR" => "1968628.16",
+      ...
+    }
+  }
+}
+```
+
+Get prices
 
 ```elixir
 Coinbase.get_buy_price("BTC-MYR")
 %{"data" => %{"amount" => "12500.29", "currency" => "MYR"}}
+
+Coinbase.get_sell_price("BTC-MYR")
+%{"data" => %{"amount" => "12700.29", "currency" => "MYR"}}
+
+Coinbase.get_spot_price("BTC-MYR")
+%{"data" => %{"amount" => "12600.29", "currency" => "MYR"}}
 ```
 
 ### Account
@@ -93,7 +129,7 @@ Please configure your API key and secret in your config file, see dev.secret.exs
 config :coinbase_ex, api_key: "YOUR_API_KEY",
                   api_secret: "YOUR_API_SECRET",
                   api_url: "https://api.coinbase.com",
-                  version: "2016-08-10"
+                  version: "2017-12-08"
 ```
 
 ## Installation
