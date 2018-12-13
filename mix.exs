@@ -23,6 +23,6 @@ defmodule Coinbase.Mixfile do
 
   defp deps do
     [{:poison, "~> 3.1.0", override: true},
-     {:httpoison, "~> 0.11.2"}]
+     {:httpoison, "~> 1.0"}]
   end
 end
