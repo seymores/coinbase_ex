@@ -44,6 +44,14 @@ defmodule Coinbase do
     data = %{name: name, currency: currency}
     post!("/v2/accounts", data)
   end
+  
+  @doc """
+    Create address with name
+  """
+  def create_address(id, name \\ "") do
+    data = %{name: name }
+    post!("/v2/accounts/#{id}/addresses", data)
+  end
 
   def update_account(id, data) when is_map(data) do
      update!("/v2/accounts/#{id}", data)
